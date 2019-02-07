@@ -45,19 +45,8 @@ end
 def two_sum_hash?(arr, target_sum)
   hash = Hash.new(0)
   arr.each_with_index do |val, i|
-    hash[i] = val
-  end
-  left = 0
-  right = hash.length - 1
-  while left < right
-    sum = hash[left] + hash[right]
-    if sum < target_sum
-      left += 1
-    elsif sum > target_sum
-      right -= 1
-    else
-      return true
-    end
+    return true if hash[target_sum - val]
+    hash[val] = true
   end
   false
 end
